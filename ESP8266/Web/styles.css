@@ -1,0 +1,107 @@
+div.container {
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgb(158, 219, 255);
+    height: 500px;
+    text-align: center;
+}
+
+div.header {
+    text-align: center;
+    background-color: rgb(168, 168, 168);
+    border-radius: 10px 10px 0px 0px;
+    height: 100px;
+    padding: 5px;
+
+}
+
+h1.header {
+    color: white;
+    font-size: 36pt;
+}
+
+/* Progress */
+#progress-bar {
+    display: block;
+
+    width: 100%;
+    max-width: 450px;
+    height: 20px;
+
+    background: white;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.bar::-webkit-progress-value {
+    background: greenyellow;
+}
+.bar-paused::-webkit-progress-value {
+    background: orange;
+}
+
+.progress-text-container {
+    margin: 20px auto 20px auto;
+    width: 100%;
+}
+/* ---------- */
+
+/* Params */
+table.params {
+    width: 80%;
+    
+    margin: 20px auto 20px auto;
+}
+
+td.param-name {
+    text-align: left;
+}
+
+td.param-val {
+    text-align: right;
+}
+
+tr.even {
+    background-color: whitesmoke;
+}
+
+input {
+    width: 50%;
+}
+
+td {
+    padding: 5px;
+}
+
+
+/* ------ */
+
+/* Buttons */
+button {
+    width: 45%;
+    height: 50px;
+
+    border-radius: 5px;
+    
+    display: inline;
+    color: white;
+
+    font-size: 26pt;
+    border: none;
+}
+
+button.start {
+    background-color: green;
+}
+
+button.stop {
+    background-color: red;
+}
+
+button.pause, button.continue {
+    background-color: orange;
+}
+/* ------- */

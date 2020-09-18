@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="script.js"></script>
+
+        <title>Title</title>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="header">Timelapser</h1>
+            </div>
+            
+            <progress id="progress-bar" class="bar" value="0" max="0"></progress>
+            
+            <table class="progress-text-container">
+                <tr>
+                    <th>Frames:</th>
+                    <td id="progress-frames">0/0</td>
+                    <th>Time left:</th>
+                    <td id="progress-time">0:0:0</td>
+                </tr>
+            </table>
+            
+            <table class="params">
+                <tr class="even">
+                    <td class="param-name">Interval (seconds):</td>
+                    <td class="param-val">
+                        <input id="param-interval" type="number" min="1">
+                    </td>
+                </tr>
+                <tr class="odd">
+                    <td class="param-name">Frames count:</td>
+                    <td class="param-val">
+                        <input id="param-frames" type="number" min="0" max="86400">
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td class="param-name">Shoot duration (HH:MM):</td>
+                    <td class="param-val">
+                        <input id="param-shoot" type="time">
+                    </td>
+                </tr>
+                <tr class="odd">
+                    <td class="param-name">FPS:</td>
+                    <td class="param-val">
+                        <input id="param-fps" type="number" min="0">
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td class="param-name">Timelapse duration (MM:SS):</td>
+                    <td class="param-val">
+                        <input id="param-duration" type="time">
+                    </td>
+                </tr>
+            </table>
+
+            <button onclick="btn_start_stop()" id="start-stop" class="start">Start</button>
+            <button onclick="btn_pause()" id="pause" class="pause">Pause</button>
+
+            <script>onLoad();</script>
+        </div>
+    </body>
+</html>
