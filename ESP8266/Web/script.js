@@ -40,23 +40,6 @@ function timelapser() {
     }
 }
 
-function gui_updater() {
-    let bar = document.getElementById("progress-bar");
-    let frames = document.getElementById("progress-frames");
-    let timer = document.getElementById("progress-time");
-
-    bar.max = FRAMES;
-    bar.value = _shoted;
-
-    frames.innerText = _shoted + '/' + FRAMES;
-
-    hms = timer.innerText.split(':')
-    if (Number(hms[2]) > 0)
-        timer.innerText = hms[0] + ':' + hms[1] + ':' + (Number(hms[2] ) - 1)
-    else 
-        timer.innerText = hms[0] + ':' + (Number(hms[1] ) - 1) + ':' + '59'
-}
-
 let timerTL = undefined;
 let timerGUI = undefined;
 /* ---------- */ 
@@ -71,8 +54,6 @@ function btn_start_stop() {
             return;
         }
         
-        update_fields();
-        
         // Locking fields
         document.getElementById('param-interval').readOnly = true;
         document.getElementById('param-frames').readOnly = true;
@@ -82,12 +63,12 @@ function btn_start_stop() {
         
         // Starting timers
         timerTL = setInterval(timelapser, INTERVAL * 1000);
-        timerGUI = setInterval(gui_updater, 1000);
+        timerGUI = setInterval(update_fields, 1000);
 
         btn.className = "stop";
         btn.innerText = "Stop";
         
-        gui_updater();
+        update_fields();
 
         // TODO: api request
     } else {
@@ -112,7 +93,7 @@ function btn_start_stop() {
 
         _shoted = 0
 
-        gui_updater();
+        update_fields();
 
         document.getElementById("progress-time").innerText = "00:00:00";
 
@@ -145,7 +126,7 @@ function btn_pause() {
         
         // Starting timers
         timerTL = setInterval(timelapser, INTERVAL * 1000);
-        timerGUI = setInterval(gui_updater, 1000);
+        timerGUI = setInterval(update_fields, 1000);
 
         bar.className = "bar";
 
@@ -163,7 +144,14 @@ function update_fields() {
     document.getElementById('param-fps').value = FPS;
     document.getElementById('param-duration').value = DURATION;
 
+    let bar = document.getElementById("progress-bar");
+    let frames = document.getElementById("progress-frames");
     let timer = document.getElementById("progress-time");
+
+    bar.max = FRAMES;
+    bar.value = _shoted;
+
+    frames.innerText = _shoted + '/' + FRAMES;
 
     h = Math.floor((FRAMES - _shoted) * INTERVAL / 3600)
     m = Math.floor((FRAMES - _shoted) * INTERVAL % 3600 / 60)
